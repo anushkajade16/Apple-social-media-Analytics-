@@ -30,13 +30,13 @@ Excel — pivot tables, pivot charts, and formulas. No Python or Power BI here, 
 
 ## Files
 
-- `task_1_cleaning_data.xlsx` – raw data cleanup
-- `task_2_Engagement_analysis.xlsx` – engagement rate + top posts
-- `task_3_Platform_analysis.xlsx` – platform-by-platform comparison
-- `task_4_Hashtag_and_content_strategy.xlsx` – hashtag and content type performance
-- `task_5_Campaign_Effectiveness.xlsx` – campaign ROI analysis
-- `task_6_Follower_Retention_Loyalty.xlsx` – follower growth and retention trends
+## Files
 
-## Video walkthrough
+- [`task_1_cleaning_data.xlsx`](task_1_cleaning_data.xlsx) – raw data cleanup and formatting
+- [`task_2_Engagement_analysis.xlsx`](task_2_Engagement_analysis.xlsx) – engagement rate calculations and top-performing posts
+- [`task_3_Platform_analysis.xlsx`](task_3_Platform_analysis.xlsx) – platform-by-platform comparison of growth and engagement
+- [`task_4_Hashtag_and_content_strategy.xlsx`](task_4Hashtag_and_content_statergy.xlsx) – hashtag frequency vs. performance, content type comparison
+- [`task_5_Campaign_Effectiveness.xlsx`](task_5_Campaign_Effectiveness.xlsx) – ad spend vs. impressions vs. engagement uplift by campaign
+- [`task_6_Follower_Retention_Loyalty.xlsx`](task_6_Follower_Retention___Loyalty.xlsx) – follower growth trends and retention vs. ad spend
 
 I also recorded a short walkthrough explaining the approach and findings: [watch here](https://drive.google.com/file/d/1vxuDI7gyfCdOYUCexZ_9xbUqhLwLZvZf/view?usp=sharing)
