@@ -34,10 +34,12 @@ Excel — pivot tables, pivot charts, and formulas. No Python or Power BI here, 
 
 ## Files
 
-- [`task_1_cleaning_data.xlsx`](FOLDERNAME/task_1_cleaning_data.xlsx) – raw data cleanup and formatting
-- [`task_2_Engagement_analysis.xlsx`](FOLDERNAME/task_2_Engagement_analysis.xlsx) – engagement rate calculations and top-performing posts
-- [`task_3_Platform_analysis.xlsx`](FOLDERNAME/task_3_Platform_analysis.xlsx) – platform-by-platform comparison of growth and engagement
-- [`task_4_Hashtag_and_content_strategy.xlsx`](FOLDERNAME/task_4Hashtag_and_content_statergy.xlsx) – hashtag frequency vs. performance, content type comparison
-- [`task_5_Campaign_Effectiveness.xlsx`](FOLDERNAME/task_5_Campaign_Effectiveness.xlsx) – ad spend vs. impressions vs. engagement uplift by campaign
-- [`task_6_Follower_Retention_Loyalty.xlsx`](FOLDERNAME/task_6_Follower_Retention___Loyalty.xlsx) – follower growth trends and retention vs. ad spend
+## Files
+
+- [`task_1 cleaning data.xlsx`](C2_Project_Social_Media_Analytics_Apple/task_1%20cleaning%20data.xlsx) – raw data cleanup and formatting
+- [`task_2 Engagement analysis.xlsx`](C2_Project_Social_Media_Analytics_Apple/task_2%20Engagement%20analysis.xlsx) – engagement rate calculations and top-performing posts
+- [`task_3 Platform analysis.xlsx`](C2_Project_Social_Media_Analytics_Apple/task_3%20Platform%20analysis.xlsx) – platform-by-platform comparison of growth and engagement
+- [`task_4 Hashtag and content strategy.xlsx`](C2_Project_Social_Media_Analytics_Apple/task_4Hashtag%20and%20content%20statergy.xlsx) – hashtag frequency vs. performance, content type comparison
+- [`task_5 Campaign Effectiveness.xlsx`](C2_Project_Social_Media_Analytics_Apple/task_5%20Campaign%20Effectiveness.xlsx) – ad spend vs. impressions vs. engagement uplift by campaign
+- [`task_6 Follower Retention & Loyalty.xlsx`](C2_Project_Social_Media_Analytics_Apple/task_6%20Follower%20Retention%20%26%20Loyalty.xlsx) – follower growth trends and retention vs. ad spend
 I also recorded a short walkthrough explaining the approach and findings: [watch here](https://drive.google.com/file/d/1vxuDI7gyfCdOYUCexZ_9xbUqhLwLZvZf/view?usp=sharing)
