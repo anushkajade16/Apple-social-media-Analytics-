@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The title shows on the browser tab. Change it to whatever you like. -->
+<title>Apple Social Media Analytics | Excel Project</title>
+
+<style>
+  /* ===== COLORS: change these values to restyle the whole page ===== */
+  :root {
+    --main: #0071e3;   /* blue: buttons, numbers and highlights */
+    --dark: #1d1d1f;   /* near-black: headings and text */
+    --light: #f5f5f7;  /* light grey: page background */
+    --text: #1d1d1f;   /* normal text */
+    --grey: #6e6e73;   /* softer grey text */
+  }
+
+  /* ===== BASIC PAGE STYLE ===== */
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif; font-size: 18px; line-height: 1.6; color: var(--text); background: var(--light); }
+  .box { max-width: 900px; margin: 0 auto; padding: 0 20px; }  /* keeps content centered */
+  section { padding: 44px 0; }
+  h2 { color: var(--dark); font-size: 34px; letter-spacing: -0.02em; margin: 0 0 14px; }
+  h3 { font-size: 26px; letter-spacing: -0.01em; margin: 0 0 10px; }
+  h4 { margin: 22px 0 8px; font-size: 17px; }
+  p, li { color: #333336; }
+
+  /* ===== TOP BANNER (white, big centered title) ===== */
+  header { background: white; color: var(--dark); padding: 88px 0 72px; text-align: center; }
+  header h1 { font-size: clamp(38px, 7vw, 64px); line-height: 1.08; letter-spacing: -0.03em; margin: 0 0 16px; }
+  header p { color: var(--grey); font-size: 21px; max-width: 640px; margin: 0 auto; }
+
+  /* ===== BUTTON (pill shape) ===== */
+  .button { display: inline-block; background: var(--main); color: white; padding: 12px 28px; border-radius: 980px; text-decoration: none; font-weight: 600; }
+  .button:hover { background: #0077ed; filter: brightness(1.08); }
+
+  /* ===== CARDS (white rounded boxes) ===== */
+  .card { background: white; border-radius: 22px; padding: 28px; margin-bottom: 22px; }
+
+  /* ===== BIG NUMBERS ===== */
+  .numbers { display: flex; flex-wrap: wrap; gap: 16px; }
+  .number { flex: 1; min-width: 180px; background: white; border-radius: 18px; padding: 20px 22px; color: var(--grey); font-size: 16px; }
+  .number strong { display: block; font-size: 40px; letter-spacing: -0.02em; color: var(--main); }
+
+  /* ===== WORD MEANINGS ===== */
+  dt { font-weight: 600; margin-top: 14px; }
+  dd { margin: 0; color: #333336; }
+
+  /* ===== SIMPLE BAR CHARTS (made with plain HTML, no images) ===== */
+  .chart { margin: 8px 0 16px; }
+  .row { display: grid; grid-template-columns: minmax(120px, 34%) 1fr 78px; gap: 10px; align-items: center; margin-bottom: 9px; font-size: 15px; }
+  .lab { overflow-wrap: anywhere; }
+  .track { background: #e8e8ed; border-radius: 980px; height: 14px; display: block; overflow: hidden; }
+  .track i { display: block; height: 100%; border-radius: 980px; background: #9cc9f5; }
+  .track i.hi { background: var(--main); }     /* the top bar is darker blue */
+  .val { text-align: right; font-weight: 600; }
+  @media (max-width: 600px) { .row { grid-template-columns: 1fr 70px; } .row .track { grid-column: 1 / 3; grid-row: 2; } }
+
+  /* ===== TABLE ===== */
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 10px; border-bottom: 1px solid #e8e8ed; }
+  th { color: var(--grey); font-weight: 600; }
+
+  .task { color: var(--main); font-weight: 600; font-size: 15px; margin: 0 0 4px; }
+  footer { background: white; color: var(--grey); text-align: center; padding: 28px 0; font-size: 15px; }
+</style>
+</head>
+
+<body>
+
+<!-- ===== 1. TOP BANNER ===== -->
+<header>
+  <div class="box">
+    <h1>Apple Social Media Analytics</h1>
+    <p>An Excel project on how Apple's posts, hashtags, campaigns and followers perform across four platforms.</p>
+  </div>
+</header>
+
+<!-- ===== 2. ABOUT THE PROJECT ===== -->
+<section>
+  <div class="box">
+    <h2>About this project</h2>
+    <p>
+      I analysed Apple's social media data on Instagram, LinkedIn, Twitter and YouTube
+      in Excel, using pivot tables and charts. The project has six parts: cleaning the
+      data, engagement, platforms, hashtags and content, campaigns, and follower growth.
+    </p>
+
+    <!-- Big numbers. Change the numbers or words to update them. -->
+    <div class="numbers">
+      <div class="number"><strong>300</strong> posts analysed</div>
+      <div class="number"><strong>4</strong> platforms</div>
+      <div class="number"><strong>5</strong> campaigns</div>
+      <div class="number"><strong>12.3%</strong> average engagement rate</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. WORDS EXPLAINED ===== -->
+<section>
+  <div class="box">
+    <h2>Words used in this project</h2>
+    <dl>
+      <dt>Engagement rate</dt>
+      <dd>Likes + shares + comments, divided by impressions. It shows how many views turned into action.</dd>
+      <dt>Impressions</dt>
+      <dd>The number of times a post was shown on a screen.</dd>
+      <dt>Reach</dt>
+      <dd>The number of different people who saw a post.</dd>
+      <dt>Engagement uplift</dt>
+      <dd>How much a campaign increased engagement, shown as a percentage.</dd>
+      <dt>Moving average</dt>
+      <dd>An average of the last few weeks. It smooths out sudden ups and downs so the trend is easier to see.</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- ===== 4. TASK 1: CLEANING ===== -->
+<section>
+  <div class="box">
+    <h2>The six parts of the project</h2>
+
+    <div class="card">
+      <p class="task">Part 1</p>
+      <h3>Cleaning the data</h3>
+      <p>
+        The cleaned dataset has 300 posts from June 2024 to October 2025. Each post has a platform,
+        content type, hashtags, likes, shares, comments, clicks, reach, impressions and campaign name.
+        The hashtags were split into two columns, Hashtag_1 and Hashtag_2. There are no duplicate posts
+        and no missing values, except Hashtag_2 for the 33 posts that use only one hashtag.
+      </p>
+    </div>
+
+<!-- ===== 5. TASK 2: ENGAGEMENT ===== -->
+    <div class="card">
+      <p class="task">Part 2</p>
+      <h3>Engagement analysis</h3>
+      <h4>The 10 posts with the highest engagement rate</h4>
+      <div class="chart ">
+<div class="row"><span class="lab">A82 (LinkedIn, Video)</span><span class="track"><i class="hi" style="width:100.0%"></i></span><span class="val">49%</span></div>
+<div class="row"><span class="lab">A201 (YouTube, Tweet)</span><span class="track"><i class="" style="width:99.5%"></i></span><span class="val">49%</span></div>
+<div class="row"><span class="lab">A121 (LinkedIn, Video)</span><span class="track"><i class="" style="width:92.7%"></i></span><span class="val">45%</span></div>
+<div class="row"><span class="lab">A127 (Twitter, Image)</span><span class="track"><i class="" style="width:84.9%"></i></span><span class="val">42%</span></div>
+<div class="row"><span class="lab">A13 (YouTube, Carousel)</span><span class="track"><i class="" style="width:82.3%"></i></span><span class="val">40%</span></div>
+<div class="row"><span class="lab">A123 (Twitter, Video)</span><span class="track"><i class="" style="width:80.3%"></i></span><span class="val">39%</span></div>
+<div class="row"><span class="lab">A287 (Instagram, Video)</span><span class="track"><i class="" style="width:74.9%"></i></span><span class="val">37%</span></div>
+<div class="row"><span class="lab">A226 (Twitter, Tweet)</span><span class="track"><i class="" style="width:72.2%"></i></span><span class="val">35%</span></div>
+<div class="row"><span class="lab">A231 (Twitter, Image)</span><span class="track"><i class="" style="width:69.2%"></i></span><span class="val">34%</span></div>
+<div class="row"><span class="lab">A185 (Instagram, Image)</span><span class="track"><i class="" style="width:68.9%"></i></span><span class="val">34%</span></div>
+</div>
+      <h4>Average engagement rate by content type</h4>
+      <div class="chart ">
+<div class="row"><span class="lab">Video</span><span class="track"><i class="hi" style="width:100.0%"></i></span><span class="val">13.9%</span></div>
+<div class="row"><span class="lab">Carousel</span><span class="track"><i class="" style="width:88.0%"></i></span><span class="val">12.3%</span></div>
+<div class="row"><span class="lab">Image</span><span class="track"><i class="" style="width:82.9%"></i></span><span class="val">11.5%</span></div>
+<div class="row"><span class="lab">Tweet</span><span class="track"><i class="" style="width:81.5%"></i></span><span class="val">11.4%</span></div>
+</div>
+      <h4>Total likes by platform</h4>
+      <div class="chart ">
+<div class="row"><span class="lab">LinkedIn</span><span class="track"><i class="hi" style="width:100.0%"></i></span><span class="val">1,134,366</span></div>
+<div class="row"><span class="lab">Twitter</span><span class="track"><i class="" style="width:91.5%"></i></span><span class="val">1,037,623</span></div>
+<div class="row"><span class="lab">YouTube</span><span class="track"><i class="" style="width:83.6%"></i></span><span class="val">948,258</span></div>
+<div class="row"><span class="lab">Instagram</span><span class="track"><i class="" style="width:83.5%"></i></span><span class="val">947,196</span></div>
+</div>
+      <ul>
+        <li>The best post, A82 on LinkedIn, had a 49% engagement rate. That is about four times the average.</li>
+        <li>Video posts have the highest average engagement rate (13.9% vs 12.3% overall).</li>
+        <li>LinkedIn gets the most total likes, and Twitter carousel posts got the most likes of any platform and content type pairing (394,886).</li>
+        <li>The hashtags #iPhone16Launch #AppleEvent have the highest average clicks (1,811 per post). #MacBookProM3 has the lowest (1,289).</li>
+      </ul>
+    </div>
+
+<!-- ===== 6. TASK 3: PLATFORMS ===== -->
+    <div class="card">
+      <p class="task">Part 3</p>
+      <h3>Platform analysis</h3>
+      <p>This part uses 200 weekly records from June 2024 to May 2025.</p>
+      <h4>Average weekly engagement rate</h4>
+      <div class="chart ">
+<div class="row"><span class="lab">YouTube</span><span class="track"><i class="hi" style="width:100.0%"></i></span><span class="val">17.60%</span></div>
+<div class="row"><span class="lab">Twitter</span><span class="track"><i class="" style="width:99.3%"></i></span><span class="val">17.48%</span></div>
+<div class="row"><span class="lab">Instagram</span><span class="track"><i class="" style="width:88.4%"></i></span><span class="val">15.56%</span></div>
+<div class="row"><span class="lab">LinkedIn</span><span class="track"><i class="" style="width:79.9%"></i></span><span class="val">14.07%</span></div>
+</div>
+      <h4>Total follower growth</h4>
+      <div class="chart ">
+<div class="row"><span class="lab">Twitter</span><span class="track"><i class="hi" style="width:100.0%"></i></span><span class="val">303,407</span></div>
+<div class="row"><span class="lab">LinkedIn</span><span class="track"><i class="" style="width:95.7%"></i></span><span class="val">290,487</span></div>
+<div class="row"><span class="lab">Instagram</span><span class="track"><i class="" style="width:86.3%"></i></span><span class="val">261,862</span></div>
+<div class="row"><span class="lab">YouTube</span><span class="track"><i class="" style="width:76.0%"></i></span><span class="val">230,642</span></div>
+</div>
+      <ul>
+        <li>YouTube has the highest engagement rate but the lowest follower growth.</li>
+        <li>Twitter has the highest follower growth and the second-highest engagement rate.</li>
+        <li>LinkedIn has the lowest engagement rate, so it has the most room to improve.</li>
+        <li>Spending more on ads did not raise engagement. In this data, ad spend and engagement rate show almost no link.</li>
+      </ul>
+    </div>
+
+<!-- ===== 7. TASK 4: HASHTAGS AND CONTENT ===== -->
+    <div class="card">
+      <p class="task">Part 4</p>
+      <h3>Hashtag and content strategy</h3>
+      <h4>Most used hashtags (number of posts)</h4>
+      <div class="chart ">
+<div class="row"><span class="lab">#AppleEvent</span><span class="track"><i class="hi" style="width:100.0%"></i></span><span class="val">51</span></div>
+<div class="row"><span class="lab">#AppleWatch</span><span class="track"><i class="" style="width:72.5%"></i></span><span class="val">37</span></div>
+<div class="row"><span class="lab">#AppleMusic</span><span class="track"><i class="" style="width:66.7%"></i></span><span class="val">34</span></div>
+<div class="row"><span class="lab">#iPhone16Launch</span><span class="track"><i class="" style="width:56.9%"></i></span><span class="val">29</span></div>
+<div class="row"><span class="lab">#MacBookAirM3</span><span class="track"><i class="" style="width:54.9%"></i></span><span class="val">28</span></div>
+<div class="row"><span class="lab">#iPhonePhotography</span><span class="track"><i class="" style="width:49.0%"></i></span><span class="val">25</span></div>
+<div class="row"><span class="lab">#AppleDesign</span><span class="track"><i class="" style="width:49.0%"></i></span><span class="val">25</span></div>
+<div class="row"><span class="lab">#AppleWatchUltra2</span><span class="track"><i class="" style="width:49.0%"></i></span><span class="val">25</span></div>
+<div class="row"><span class="lab">#MacBookProM3</span><span class="track"><i class="" style="width:33.3%"></i></span><span class="val">17</span></div>
+<div class="row"><span class="lab">#ShotOniPhone</span><span class="track"><i class="" style="width:31.4%"></i></span><span class="val">16</span></div>
+<div class="row"><span class="lab">#Sustainability</span><span class="track"><i class="" style="width:25.5%"></i></span><span class="val">13</span></div>
+</div>
+      <h4>Average likes per post, by hashtag</h4>
+      <div class="chart ">
+<div class="row"><span class="lab">#iPhone16Launch #AppleEvent</span><span class="track"><i class="hi" style="width:100.0%"></i></span><span class="val">15,420</span></div>
+<div class="row"><span class="lab">#ShotOniPhone</span><span class="track"><i class="" style="width:93.2%"></i></span><span class="val">14,378</span></div>
+<div class="row"><span class="lab">#AppleEvent #iPhone16</span><span class="track"><i class="" style="width:92.5%"></i></span><span class="val">14,262</span></div>
+<div class="row"><span class="lab">#AppleWatch #Health</span><span class="track"><i class="" style="width:90.7%"></i></span><span class="val">13,986</span></div>
+<div class="row"><span class="lab">#iPhonePhotography #ShotOniPhone</span><span class="track"><i class="" style="width:89.9%"></i></span><span class="val">13,857</span></div>
+<div class="row"><span class="lab">#AppleMusic #AppleLifestyle</span><span class="track"><i class="" style="width:87.1%"></i></span><span class="val">13,437</span></div>
+<div class="row"><span class="lab">#AppleDesign #Innovation</span><span class="track"><i class="" style="width:86.4%"></i></span><span class="val">13,328</span></div>
+<div class="row"><span class="lab">#AppleWatchUltra2 #HealthTech</span><span class="track"><i class="" style="width:84.7%"></i></span><span class="val">13,058</span></div>
+<div class="row"><span class="lab">#MacBookAirM3 #AppleInnovation</span><span class="track"><i class="" style="width:84.4%"></i></span><span class="val">13,015</span></div>
+<div class="row"><span class="lab">#AppleEvent #iPadPro</span><span class="track"><i class="" style="width:84.2%"></i></span><span class="val">12,987</span></div>
+<div class="row"><span class="lab">#MacBookProM3</span><span class="track"><i class="" style="width:82.9%"></i></span><span class="val">12,777</span></div>
+<div class="row"><span class="lab">#Sustainability #AppleEarth</span><span class="track"><i class="" style="width:62.4%"></i></span><span class="val">9,616</span></div>
+</div>
+      <h4>Total likes by content type</h4>
+      <div class="chart ">
+<div class="row"><span class="lab">Carousel</span><span class="track"><i class="hi" style="width:100.0%"></i></span><span class="val">1,199,672</span></div>
+<div class="row"><span class="lab">Video</span><span class="track"><i class="" style="width:87.9%"></i></span><span class="val">1,054,188</span></div>
+<div class="row"><span class="lab">Image</span><span class="track"><i class="" style="width:74.3%"></i></span><span class="val">891,508</span></div>
+</div>
+      <ul>
+        <li>#AppleEvent is the most used hashtag (51 posts). #Sustainability is the least used (13 posts).</li>
+        <li>#iPhone16Launch #AppleEvent gets the most average likes (15,421).</li>
+        <li>#AppleWatchUltra2 #HealthTech gets the most average shares (981).</li>
+        <li>#Sustainability #AppleEarth gets the most average comments (646), but the fewest likes.</li>
+        <li>Carousel and video posts get more likes than images, so images work best as supporting content.</li>
+      </ul>
+    </div>
+
+<!-- ===== 8. TASK 5: CAMPAIGNS ===== -->
+    <div class="card">
+      <p class="task">Part 5</p>
+      <h3>Campaign effectiveness</h3>
+      <div class="scroll">
+      <table>
+        <tr><th>Campaign</th><th>When</th><th>Goal</th><th>Ad spend</th><th>Impressions</th><th>Uplift</th><th>Impressions per 1 spent</th></tr>
+        <tr><td>Apple Event September 2025</td><td>Sep 2025</td><td>Brand Engagement</td><td>75,000</td><td>880,000</td><td>47%</td><td>11.7</td></tr><tr><td>iPhone 16 Launch</td><td>Jun to Jul 2024</td><td>Product Launch</td><td>85,000</td><td>950,000</td><td>45%</td><td>11.2</td></tr><tr><td>Apple Watch Ultra 2 Launch</td><td>Dec 2024 to Jan 2025</td><td>Health & Fitness Awareness</td><td>55,000</td><td>700,000</td><td>41%</td><td>12.7</td></tr><tr><td>MacBook Air M3 Campaign</td><td>Oct 2024</td><td>Product Promotion</td><td>60,000</td><td>780,000</td><td>38%</td><td>13.0</td></tr><tr><td>Sustainability Awareness Drive</td><td>Mar 2025</td><td>Sustainability Branding</td><td>40,000</td><td>550,000</td><td>32%</td><td>13.8</td></tr>
+      </table>
+      </div>
+      <p style="font-size:15px">The last column is my own calculation: impressions divided by ad spend.</p>
+      <h4>Engagement uplift by campaign</h4>
+      <div class="chart ">
+<div class="row"><span class="lab">Apple Event September 2025</span><span class="track"><i class="hi" style="width:100.0%"></i></span><span class="val">47%</span></div>
+<div class="row"><span class="lab">iPhone 16 Launch</span><span class="track"><i class="" style="width:95.7%"></i></span><span class="val">45%</span></div>
+<div class="row"><span class="lab">Apple Watch Ultra 2 Launch</span><span class="track"><i class="" style="width:87.2%"></i></span><span class="val">41%</span></div>
+<div class="row"><span class="lab">MacBook Air M3 Campaign</span><span class="track"><i class="" style="width:80.9%"></i></span><span class="val">38%</span></div>
+<div class="row"><span class="lab">Sustainability Awareness Drive</span><span class="track"><i class="" style="width:68.1%"></i></span><span class="val">32%</span></div>
+</div>
+      <ul>
+        <li>The Apple Event September 2025 campaign had the highest engagement uplift (47%).</li>
+        <li>The iPhone 16 Launch had the most impressions (950,000), but it also cost the most and gave the fewest impressions for each unit spent.</li>
+        <li>The Sustainability Awareness Drive cost the least and gave the most impressions for each unit spent.</li>
+        <li>Across all five campaigns, total ad spend was 315,000, total impressions were 3.86 million, and the average uplift was 40.6%.</li>
+        <li>Campaigns with high engagement performed better than campaigns that only had a high budget.</li>
+      </ul>
+    </div>
+
+<!-- ===== 9. TASK 6: FOLLOWERS ===== -->
+    <div class="card">
+      <p class="task">Part 6</p>
+      <h3>Follower retention and loyalty</h3>
+      <h4>Smoothed follower growth (3-week moving average)</h4>
+      <svg viewBox="0 0 800 300" role="img" aria-label="Line chart of smoothed follower growth" style="width:100%;height:auto"><line x1="70" x2="780" y1="255.0" y2="255.0" stroke="#e8e8ed"/><text x="62" y="259.0" text-anchor="end" font-size="13" fill="#6e6e73">0M</text><line x1="70" x2="780" y1="204.4" y2="204.4" stroke="#e8e8ed"/><text x="62" y="208.4" text-anchor="end" font-size="13" fill="#6e6e73">1M</text><line x1="70" x2="780" y1="153.8" y2="153.8" stroke="#e8e8ed"/><text x="62" y="157.8" text-anchor="end" font-size="13" fill="#6e6e73">2M</text><line x1="70" x2="780" y1="103.1" y2="103.1" stroke="#e8e8ed"/><text x="62" y="107.1" text-anchor="end" font-size="13" fill="#6e6e73">3M</text><line x1="70" x2="780" y1="52.5" y2="52.5" stroke="#e8e8ed"/><text x="62" y="56.5" text-anchor="end" font-size="13" fill="#6e6e73">4M</text><text x="70.0" y="285" text-anchor="start" font-size="13" fill="#6e6e73">2024-06-17</text><text x="311.7" y="285" text-anchor="middle" font-size="13" fill="#6e6e73">2024-10-07</text><text x="553.4" y="285" text-anchor="middle" font-size="13" fill="#6e6e73">2025-01-27</text><text x="780.0" y="285" text-anchor="end" font-size="13" fill="#6e6e73">2025-05-12</text><polyline points="70.0,226.3 85.1,220.9 100.2,215.8 115.3,211.1 130.4,207.1 145.5,203.2 160.6,199.1 175.7,194.9 190.9,190.9 206.0,186.6 221.1,182.1 236.2,177.5 251.3,173.0 266.4,168.4 281.5,164.4 296.6,160.6 311.7,157.1 326.8,153.0 341.9,148.7 357.0,143.4 372.1,138.2 387.2,133.7 402.3,129.6 417.4,125.2 432.6,120.6 447.7,116.1 462.8,112.4 477.9,108.8 493.0,104.9 508.1,100.0 523.2,95.0 538.3,90.2 553.4,85.5 568.5,80.6 583.6,76.0 598.7,72.0 613.8,67.7 628.9,63.1 644.0,58.1 659.1,53.7 674.3,49.1 689.4,44.4 704.5,40.0 719.6,35.8 734.7,31.4 749.8,27.2 764.9,23.5 780.0,20.0" fill="none" stroke="#0071e3" stroke-width="3"/></svg>
+      <ul>
+        <li>The smoothed trend rises steadily, from about 0.57M on 2024-06-17 to about 4.64M on 2025-05-12.</li>
+        <li>The moving average makes the trend easier to read by reducing sudden weekly jumps.</li>
+        <li>I also compared ad spend with weekly follower growth. In this data, higher spending did not clearly lead to more new followers.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 10. RECOMMENDATIONS ===== -->
+<section>
+  <div class="box">
+    <h2>What Apple could do next</h2>
+    <div class="card">
+      <ul>
+        <li>Post more video and carousel content, and use images to support them.</li>
+        <li>Use hashtags that work: #iPhone16Launch #AppleEvent for likes and clicks, and #AppleWatchUltra2 #HealthTech for shares.</li>
+        <li>Work on LinkedIn engagement, which is the lowest of the four platforms.</li>
+        <li>Grow YouTube followers, since YouTube engagement is already high.</li>
+        <li>Plan campaigns around engagement, not just a bigger budget.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 11. DEMO VIDEO ===== -->
+<section>
+  <div class="box" style="text-align:center">
+    <h2>Watch the demo</h2>
+    <p>The video walks through the whole project.</p>
+    <!-- To change the video, replace the link inside href="..." -->
+    <a class="button" target="_blank"
+       href="https://drive.google.com/file/d/1vxuDI7gyfCdOYUCexZ_9xbUqhLwLZvZf/view?usp=sharing">
+       Open the video
+    </a>
+  </div>
+</section>
+
+<!-- ===== 12. GITHUB ===== -->
+<section>
+  <div class="box" style="text-align:center">
+    <h2>GitHub</h2>
+    <p>See the Excel files on GitHub.</p>
+    <a class="button" target="_blank" href="https://github.com/anushkajade16/Apple-social-media-Analytics-">
+       Open on GitHub
+    </a>
+  </div>
+</section>
+
+<footer>Excel • Apple Social Media Analytics Project</footer>
+
+</body>
+</html>
